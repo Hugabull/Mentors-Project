@@ -12,3 +12,13 @@
     display: flex;
     flex-direction: row;
 }
+.event {
+    
+}
+.date{
+    color: brown;
+}
+.time{
+    color: red;
+    text-decoration: underline;
+}
