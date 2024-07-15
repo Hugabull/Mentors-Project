@@ -1,0 +1,14 @@
+.nav a{
+    text-decoration: none;
+    color: black;
+    margin: 20px;
+    font-size: 40px;
+}
+.nav a:hover{
+    color: blueviolet;
+}
+.nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
