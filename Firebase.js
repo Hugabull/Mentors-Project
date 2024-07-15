@@ -19,7 +19,7 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const db = getAnalytics(app);
 
   function addText(text) {
     db.collection("messages").add({
