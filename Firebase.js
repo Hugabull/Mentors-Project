@@ -20,3 +20,32 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+
+  function addText(text) {
+    db.collection("messages").add({
+      text: text,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      console.log("Text added!");
+    }).catch((error) => {
+      console.error("Error adding text: ", error);
+    });
+  }
+
+  
+  function fetchTexts() {
+    db.collection("messages").orderBy("timestamp").onSnapshot((querySnapshot) => {
+      const messagesContainer = document.getElementById('messagesContainer');
+      messagesContainer.innerHTML = "";
+      querySnapshot.forEach((doc) => {
+        const message = doc.data().text;
+        const messageElement = document.createElement("p");
+        messageElement.textContent = message;
+        messagesContainer.appendChild(messageElement);
+      });
+    });
+  }
+  
+  // Call this function on page load
+  window.onload = fetchTexts;
+  
